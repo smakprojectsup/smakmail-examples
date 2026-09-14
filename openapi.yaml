@@ -1,0 +1,104 @@
+openapi: 3.1.0
+info:
+  title: SmakMail API
+  version: 0.1.0
+  description: |
+    Partial machine-readable description of verified SmakMail receive-only mailbox API reads.
+    This file intentionally documents only endpoints already used by the public Python client.
+    Response bodies are left open-ended so this spec does not invent or freeze undocumented fields.
+  contact:
+    name: SmakMail
+    url: https://smakmail.com
+  license:
+    name: Proprietary API
+servers:
+  - url: https://api.smakmail.com/api/v1
+    description: Production API
+tags:
+  - name: Account
+  - name: Mailbox
+security:
+  - bearerAuth: []
+paths:
+  /me:
+    get:
+      tags: [Account]
+      summary: Read the current API account
+      operationId: getMe
+      responses:
+        '200':
+          description: Current API account payload
+          content:
+            application/json:
+              schema: {}
+        default:
+          $ref: '#/components/responses/GenericJsonError'
+  /mailbox/messages:
+    get:
+      tags: [Mailbox]
+      summary: Read incoming messages for a mailbox
+      description: |
+        Returns incoming-message data for the requested mailbox.
+        When mailbox-level credential authorization is required, pass the issued mailbox password in X-Mailbox-Password.
+      operationId: getMailboxMessages
+      parameters:
+        - $ref: '#/components/parameters/Email'
+        - $ref: '#/components/parameters/MailboxPassword'
+      responses:
+        '200':
+          description: Incoming mailbox messages payload
+          content:
+            application/json:
+              schema: {}
+        default:
+          $ref: '#/components/responses/GenericJsonError'
+  /mailbox/latest-code:
+    get:
+      tags: [Mailbox]
+      summary: Read the latest verification-code result for a mailbox
+      description: |
+        Returns the latest verification-code extraction result for the requested mailbox.
+        When mailbox-level credential authorization is required, pass the issued mailbox password in X-Mailbox-Password.
+      operationId: getMailboxLatestCode
+      parameters:
+        - $ref: '#/components/parameters/Email'
+        - $ref: '#/components/parameters/MailboxPassword'
+      responses:
+        '200':
+          description: Latest-code payload
+          content:
+            application/json:
+              schema: {}
+        default:
+          $ref: '#/components/responses/GenericJsonError'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: SmakMail API key sent as Authorization: Bearer <API_KEY>.
+  parameters:
+    Email:
+      name: email
+      in: query
+      required: true
+      description: Full issued SmakMail mailbox email address.
+      schema:
+        type: string
+        format: email
+    MailboxPassword:
+      name: X-Mailbox-Password
+      in: header
+      required: false
+      description: Mailbox password from the issued order when credential-authorized reads are required.
+      schema:
+        type: string
+  responses:
+    GenericJsonError:
+      description: Error payload. Exact fields may vary by endpoint and status.
+      content:
+        application/json:
+          schema: {}
+externalDocs:
+  description: SmakMail API documentation
+  url: https://smakmail.com/en/docs/api
