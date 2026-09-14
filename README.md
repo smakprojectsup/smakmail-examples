@@ -25,13 +25,15 @@ Compatibility with any specific third-party service is not guaranteed.
 
 ## Python API client
 
-This repository includes a minimal Python client for the stable mailbox-read API surface.
+This repository includes a minimal Python client for the verified mailbox-read API surface.
 
-Install it locally:
+Install from the repository:
 
 ```bash
-python -m pip install -e .
+python -m pip install git+https://github.com/smakprojectsup/smakmail-examples.git
 ```
+
+The package metadata is also prepared for publishing as `smakmail-client` on PyPI. Until the first PyPI release is actually published, use the GitHub install command above rather than assuming a PyPI package exists.
 
 Example:
 
@@ -58,6 +60,16 @@ print(latest_code)
 The API key is sent as `Authorization: Bearer <API_KEY>` and identifies the API caller. `X-Mailbox-Password` is sent when `mailbox_password` is provided. It is used for credential-authorized mailbox reads where required. Reading a mailbox owned by another SmakMail account with mailbox credentials is a Developer API capability and does not grant access to that owner's account, billing, API keys or mailbox management.
 
 The client intentionally returns the live API JSON as-is instead of freezing response schemas in this repository.
+
+## OpenAPI
+
+`openapi.yaml` provides a partial OpenAPI 3.1 description of the verified public read surface used by the Python client:
+
+- `GET /me`
+- `GET /mailbox/messages?email=...`
+- `GET /mailbox/latest-code?email=...`
+
+The spec deliberately leaves response bodies open-ended instead of inventing undocumented fields.
 
 Current API documentation:
 
