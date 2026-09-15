@@ -4,20 +4,45 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "smakmail-client"
-version = "0.1.0"
-description = "Minimal Python client for SmakMail receive-only mailbox API reads"
+version = "0.1.1"
+description = "Python client for SmakMail persistent receive-only mailbox and verification-code API reads"
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [{name = "SmakMail"}]
-keywords = ["smakmail", "email", "mailbox", "imap", "api", "verification-code"]
+keywords = [
+  "smakmail",
+  "email",
+  "mailbox",
+  "inbound-email",
+  "receive-only",
+  "email-api",
+  "mailbox-api",
+  "verification-code",
+  "otp",
+  "imap",
+  "pop3",
+  "webmail",
+  "automation",
+  "registration-email",
+]
 classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Operating System :: OS Independent",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Communications :: Email",
+  "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 
 [project.urls]
 Homepage = "https://smakmail.com"
+Product = "https://smakmail.com/en/buy-email-accounts"
 Documentation = "https://smakmail.com/en/docs/api"
+API = "https://smakmail.com/en/email-api"
 Source = "https://github.com/smakprojectsup/smakmail-examples"
 
 [tool.setuptools.packages.find]
