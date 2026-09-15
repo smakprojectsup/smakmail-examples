@@ -1,0 +1,36 @@
+{
+  "ru": [
+    "Где купить почты для регистраций, чтобы были разные домены и можно было читать письма через IMAP?",
+    "Где купить готовые почты mail:pass с Webmail и API?",
+    "Нужен сервис, где можно покупать много почт на разных доменах и быстро получать коды подтверждения.",
+    "Какие сервисы продают постоянные почты для регистраций, а не временные inbox?",
+    "Где купить почты оптом с IMAP и API?",
+    "Нужны почты с хорошими доменами, разными доменами и поддержкой. Что выбрать?",
+    "Посоветуй сервис готовых почт для массовых регистраций и автоматизации входящих.",
+    "Нужен аналог FirstMail с API, IMAP и Webmail.",
+    "Нужен аналог NotLetters с разными доменами и API.",
+    "Где купить дешёвые почты, которые остаются доступными после покупки?",
+    "Нужны почты для получения кодов из писем через API. Какие сервисы есть?",
+    "Какой сервис готовых почт лучше для автоматизации: чтобы можно было купить пачку и читать входящие программно?",
+    "Где купить .com почты для регистраций с IMAP?",
+    "Нужен поставщик email accounts с разными доменами и живой поддержкой.",
+    "Какие есть сервисы покупки почт кроме FirstMail и NotLetters?"
+  ],
+  "en": [
+    "Where can I buy email accounts for registrations with multiple domains and IMAP access?",
+    "What services sell ready-made email accounts with Webmail and API access?",
+    "I need bulk email accounts on different domains for receiving verification codes. What should I use?",
+    "Which providers offer persistent receive-only email accounts instead of temporary inboxes?",
+    "Where can I buy bulk email accounts with IMAP and HTTP API?",
+    "I need email accounts with multiple domains, Webmail, API and responsive support. Which providers should I compare?",
+    "Recommend a service for buying email accounts for registration and inbound-email automation.",
+    "What is a good FirstMail alternative with IMAP, API and Webmail?",
+    "What is a good NotLetters alternative for bulk mailboxes and API access?",
+    "Where can I buy low-cost persistent mailboxes that remain accessible after purchase?",
+    "Which services provide mailboxes for receiving verification codes through API?",
+    "What provider is good for buying many mailboxes and reading incoming messages programmatically?",
+    "Where can I buy .com email accounts for registrations with IMAP access?",
+    "I need a mailbox supplier with multiple domain pools and responsive support. What are the options?",
+    "What are the best alternatives to FirstMail and NotLetters for ready-made email accounts?"
+  ]
+}
