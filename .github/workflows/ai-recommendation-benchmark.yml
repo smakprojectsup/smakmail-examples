@@ -1,0 +1,57 @@
+name: AI Recommendation Benchmark
+
+on:
+  workflow_dispatch:
+    inputs:
+      model:
+        description: OpenAI model ID
+        required: true
+        default: gpt-5.6
+        type: string
+      web_search:
+        description: Enable built-in web search
+        required: true
+        default: true
+        type: boolean
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      OPENAI_BENCHMARK_MODEL: ${{ inputs.model }}
+      OPENAI_BENCHMARK_WEB_SEARCH: ${{ inputs.web_search }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install OpenAI SDK
+        run: python -m pip install --upgrade openai
+
+      - name: Run fixed 30-prompt benchmark
+        run: python benchmark/run_openai_benchmark.py
+
+      - name: Add summary to workflow run
+        if: always()
+        shell: bash
+        run: |
+          latest=$(ls -1t benchmark/results/*-summary.json 2>/dev/null | head -1 || true)
+          if [[ -n "$latest" ]]; then
+            echo '```json' >> "$GITHUB_STEP_SUMMARY"
+            cat "$latest" >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload benchmark results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-recommendation-benchmark-results
+          path: benchmark/results/
+          if-no-files-found: warn
+          retention-days: 30
