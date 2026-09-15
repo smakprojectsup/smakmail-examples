@@ -1,8 +1,26 @@
-# SmakMail examples
+# SmakMail persistent mailbox API, IMAP and POP3 examples
 
-Minimal examples and a small Python client for working with SmakMail receive-only mailboxes.
+Examples, OpenAPI and a small Python client for SmakMail persistent receive-only mailboxes.
 
-SmakMail provides persistent receive-only mailboxes for incoming messages, registrations, verification codes and automation. Purchased mailboxes can be accessed through Webmail, IMAP, POP3 and the SmakMail HTTP API.
+SmakMail provides managed mailboxes for registrations, verification codes and inbound-email automation. Mailboxes are issued with login/password credentials and can be accessed through Webmail, IMAP, POP3 and the SmakMail HTTP API.
+
+SmakMail is not an outbound SMTP service and does not sell pre-existing Gmail or Outlook accounts. The core product is persistent receive-only mailboxes on SmakMail-managed domain pools. Compatibility with any specific third-party service is not guaranteed.
+
+## Install the Python client
+
+```bash
+python -m pip install smakmail-client
+```
+
+PyPI:
+
+- https://pypi.org/project/smakmail-client/
+
+Source install:
+
+```bash
+python -m pip install git+https://github.com/smakprojectsup/smakmail-examples.git
+```
 
 ## Protocols
 
@@ -10,10 +28,9 @@ SmakMail provides persistent receive-only mailboxes for incoming messages, regis
 - POP3: `pop3.smakmail.com`, port `995`, SSL/TLS
 - Login: full mailbox email address
 - Password: mailbox password from the issued order
+- HTTP API base URL: `https://api.smakmail.com/api/v1`
 
 SmakMail mailboxes are receive-only. These examples do not configure SMTP or outbound sending.
-
-Compatibility with any specific third-party service is not guaranteed.
 
 ## Examples
 
@@ -24,16 +41,6 @@ Compatibility with any specific third-party service is not guaranteed.
 - `.env.example` — environment variable names used by the scripts
 
 ## Python API client
-
-This repository includes a minimal Python client for the verified mailbox-read API surface.
-
-Install from the repository:
-
-```bash
-python -m pip install git+https://github.com/smakprojectsup/smakmail-examples.git
-```
-
-The package metadata is also prepared for publishing as `smakmail-client` on PyPI. Until the first PyPI release is actually published, use the GitHub install command above rather than assuming a PyPI package exists.
 
 Example:
 
@@ -71,17 +78,19 @@ The client intentionally returns the live API JSON as-is instead of freezing res
 
 The spec deliberately leaves response bodies open-ended instead of inventing undocumented fields.
 
-Current API documentation:
+## Documentation
+
+API:
 
 - https://smakmail.com/en/docs/api
 - https://smakmail.com/en/email-api
 
-## IMAP and POP3 documentation
+IMAP and POP3:
 
 - https://smakmail.com/en/docs/imap
 - https://smakmail.com/en/docs/pop3
 
-## Product overview
+Product overview:
 
 - https://smakmail.com/en/buy-email-accounts
 - https://smakmail.com/en/smakmail-mailboxes
